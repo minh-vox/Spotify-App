@@ -1,3 +1,17 @@
 {
-  "cmake.ignoreCMakeListsMissing": true
+  "cmake.ignoreCMakeListsMissing": true,
+
+  "dart.renameFilesWithClasses": "always",
+  "editor.rulers": [100],
+  "cSpell.words": [
+    "Satoshi",
+    "cupertino",
+    "Roboto"
+  ],
+
+  "dartBarrelFileGenerator.promptName": true,
+  "dartBarrelFileGenerator.excludeFileList": [
+    "**/!(base_page)_state.dart",
+    "**/*_event.dart"
+  ],
 }
