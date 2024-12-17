@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotify/common/helpers/is_dark_mode.dart';
+import 'package:spotify/common/widgets/app_bar/app_bar.dart';
 import 'package:spotify/common/widgets/button/basic_app_button.dart';
 import 'package:spotify/core/assets/app_images.dart';
 import 'package:spotify/core/assets/app_vector.dart';
@@ -15,6 +16,7 @@ class SignupOrSigninPage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
+          const BasicAppBar(),
           Align(
             alignment: Alignment.topRight,
             child: SvgPicture.asset(
@@ -62,7 +64,7 @@ class SignupOrSigninPage extends StatelessWidget {
                     'Spotify is a proprietary Swedish audio streaming and media services provider ',
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
-                      fontSize: 13,
+                      fontSize: 16,
                       color: AppColors.grey,
                     ),
                     textAlign: TextAlign.center,
@@ -71,31 +73,31 @@ class SignupOrSigninPage extends StatelessWidget {
                     height: 30,
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Expanded(
-                        flex: 1,
+                      Flexible(
                         child: BasicAppButton(
                           onPressed: () {},
                           title: 'Register',
                         ),
                       ),
-                      Expanded(
-                        flex: 1,
-                        child: TextButton(
-                          onPressed: () {},
+                      Flexible(
+                        child: GestureDetector(
+                          onTap: () {},
                           child: Text(
                             'Sign In',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                                color: context.isDarkMode
-                                    ? Colors.white
-                                    : Colors.black),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              color: context.isDarkMode
+                                  ? Colors.white
+                                  : Colors.black,
+                            ),
                           ),
                         ),
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),

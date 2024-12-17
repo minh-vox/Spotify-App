@@ -42,7 +42,7 @@ class GetStarted extends StatelessWidget {
                 const Text(
                   'Enjoy Listening To Music',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
@@ -51,9 +51,9 @@ class GetStarted extends StatelessWidget {
                   height: 21,
                 ),
                 const Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis enim purus sed phasellus. Cursus ornare id scelerisque aliquam.',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 16,
                     fontWeight: FontWeight.w500,
                     color: AppColors.grey,
                   ),
