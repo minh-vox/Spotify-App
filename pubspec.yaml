@@ -1,7 +1,7 @@
 name: spotify
-description: "A new Flutter project."
+description: "Listen music with spotify."
 
-publish_to: "none" # Remove this line if you wish to publish to pub.dev
+publish_to: "none"
 
 version: 1.0.0+1
 
@@ -19,7 +19,26 @@ dependencies:
   flutter_svg:
   hydrated_bloc:
   path_provider:
-  # freezed_annotation: 2.4.1
+  flutter_launcher_icons: ^0.14.2
+  flutter_native_splash: ^2.4.3
+
+# dart run flutter_launcher_icons:main
+flutter_launcher_icons:
+  android: true
+  image_path: "assets/images/app_icon.png"
+  adaptive_icon_background: "#000000"
+  adaptive_icon_foreground: "assets/images/app_icon.png"
+
+# dart run flutter_native_splash:create
+flutter_native_splash:
+  android: true
+  color: "#ffffff"
+  color_dark: "#000000"
+  android_12:
+    image: "assets/images/icon-framed.png"
+    icon_background_color: "#ffffff"
+    image_dark: "assets/images/icon-framed.png"
+    icon_background_color_dark: "#000000"
 
 dev_dependencies:
   flutter_test:
