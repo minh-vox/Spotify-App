@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:spotify/common/widgets/button/basic_app_button.dart';
-import 'package:spotify/core/assets/app_images.dart';
-import 'package:spotify/core/assets/app_vector.dart';
-import 'package:spotify/presentation/choose_mode/choose_mode.dart';
 
-import '../../core/theme/app_colors.dart';
+import '../../common/common.dart';
+import '../../resource/resource.dart';
+import '../pre.dart';
 
 class GetStarted extends StatelessWidget {
   const GetStarted({super.key});
@@ -16,11 +14,11 @@ class GetStarted extends StatelessWidget {
       body: Stack(
         children: [
           Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.fill,
                 image: AssetImage(
-                  AppImages.introBG,
+                  Assets.images.introBg.path,
                 ),
               ),
             ),
@@ -35,7 +33,7 @@ class GetStarted extends StatelessWidget {
                 Align(
                   alignment: Alignment.center,
                   child: SvgPicture.asset(
-                    AppVectors.logo,
+                    Assets.icons.spotifyIcon.path,
                   ),
                 ),
                 const Spacer(),

@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:spotify/core/theme/app_theme.dart';
-import 'package:spotify/presentation/choose_mode/hydrated_bloc/theme_cubit.dart';
-import 'package:spotify/presentation/splash/splash.dart';
+
+import 'presentation/pre.dart';
+import 'resource/resource.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
             darkTheme: AppTheme.darkTheme,
             themeMode: mode,
             debugShowCheckedModeBanner: false,
-            home: const SplashPage(),
+            home: const GetStarted(),
           );
         },
       ),

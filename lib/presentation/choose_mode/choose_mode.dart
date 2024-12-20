@@ -3,12 +3,10 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:spotify/common/widgets/button/basic_app_button.dart';
-import 'package:spotify/core/assets/app_images.dart';
-import 'package:spotify/core/assets/app_vector.dart';
-import 'package:spotify/core/theme/app_colors.dart';
-import 'package:spotify/presentation/auth/signup_or_signin.dart';
-import 'package:spotify/presentation/choose_mode/hydrated_bloc/theme_cubit.dart';
+
+import '../../common/common.dart';
+import '../../resource/resource.dart';
+import '../pre.dart';
 
 class ChooseModePage extends StatelessWidget {
   const ChooseModePage({super.key});
@@ -20,11 +18,11 @@ class ChooseModePage extends StatelessWidget {
       body: Stack(
         children: [
           Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.fill,
                 image: AssetImage(
-                  AppImages.chooseModeBG,
+                  Assets.images.chooseModeBg.path,
                 ),
               ),
             ),
@@ -39,7 +37,7 @@ class ChooseModePage extends StatelessWidget {
                 Align(
                   alignment: Alignment.center,
                   child: SvgPicture.asset(
-                    AppVectors.logo,
+                    Assets.icons.spotifyIcon.path,
                   ),
                 ),
                 const Spacer(),
@@ -109,7 +107,9 @@ class ChooseModePage extends StatelessWidget {
                   shape: BoxShape.circle,
                 ),
                 child: SvgPicture.asset(
-                  mode == ThemeMode.dark ? AppVectors.moon : AppVectors.sun,
+                  mode == ThemeMode.dark
+                      ? Assets.icons.moonIcon.path
+                      : Assets.icons.sunIcon.path,
                   fit: BoxFit.none,
                 ),
               ),

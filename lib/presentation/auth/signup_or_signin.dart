@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:spotify/common/helpers/is_dark_mode.dart';
-import 'package:spotify/common/widgets/app_bar/app_bar.dart';
-import 'package:spotify/common/widgets/button/basic_app_button.dart';
-import 'package:spotify/core/assets/app_images.dart';
-import 'package:spotify/core/assets/app_vector.dart';
 
-import '../../core/theme/app_colors.dart';
+import '../../common/common.dart';
+import '../../resource/resource.dart';
+import '../../resource/styles/app_colors.dart';
 
 class SignupOrSigninPage extends StatelessWidget {
   const SignupOrSigninPage({super.key});
@@ -20,19 +17,19 @@ class SignupOrSigninPage extends StatelessWidget {
           Align(
             alignment: Alignment.topRight,
             child: SvgPicture.asset(
-              AppVectors.topPattern,
+              Assets.icons.topPattern.path,
             ),
           ),
           Align(
             alignment: Alignment.bottomRight,
             child: SvgPicture.asset(
-              AppVectors.bottomPattern,
+              Assets.icons.bottomPattern.path,
             ),
           ),
           Align(
             alignment: Alignment.bottomLeft,
             child: Image.asset(
-              AppImages.authBG,
+              Assets.images.authBg.path,
             ),
           ),
           Align(
@@ -45,7 +42,7 @@ class SignupOrSigninPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SvgPicture.asset(
-                    AppVectors.logo,
+                    Assets.icons.spotifyIcon.path,
                   ),
                   const SizedBox(
                     height: 55,
