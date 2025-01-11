@@ -18,6 +18,15 @@ class $AssetsIconsGen {
   /// File path: assets/icons/bottom_pattern.svg
   SvgGenImage get bottomPattern => const SvgGenImage('assets/icons/bottom_pattern.svg');
 
+  /// File path: assets/icons/facebook_icon.svg
+  SvgGenImage get facebookIcon => const SvgGenImage('assets/icons/facebook_icon.svg');
+
+  /// File path: assets/icons/google_icon.svg
+  SvgGenImage get googleIcon => const SvgGenImage('assets/icons/google_icon.svg');
+
+  /// File path: assets/icons/hide_pass_icon.svg
+  SvgGenImage get hidePassIcon => const SvgGenImage('assets/icons/hide_pass_icon.svg');
+
   /// File path: assets/icons/home_top_card_icon.svg
   SvgGenImage get homeTopCardIcon => const SvgGenImage('assets/icons/home_top_card_icon.svg');
 
@@ -34,8 +43,17 @@ class $AssetsIconsGen {
   SvgGenImage get topPattern => const SvgGenImage('assets/icons/top_pattern.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values =>
-      [bottomPattern, homeTopCardIcon, moonIcon, spotifyIcon, sunIcon, topPattern];
+  List<SvgGenImage> get values => [
+        bottomPattern,
+        facebookIcon,
+        googleIcon,
+        hidePassIcon,
+        homeTopCardIcon,
+        moonIcon,
+        spotifyIcon,
+        sunIcon,
+        topPattern
+      ];
 }
 
 class $AssetsImagesGen {
