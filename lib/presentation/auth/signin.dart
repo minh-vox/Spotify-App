@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'package:spotify/common/common.dart';
-import 'package:spotify/resource/resource.dart';
+import '../../common/common.dart';
+import '../../resource/resource.dart';
 
-class SignupPage extends StatelessWidget {
-  const SignupPage({super.key});
+class SignInPage extends StatelessWidget {
+  const SignInPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +26,10 @@ class SignupPage extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               TopSignupSigninWidget(
-                title: 'Register',
-                body: _bodySignUp(context),
+                title: 'Sign In',
+                body: _bodySignIn(
+                  context,
+                ),
                 context: context,
               ),
               const SizedBox(
@@ -68,7 +70,7 @@ class SignupPage extends StatelessWidget {
                 height: 30,
               ),
               const BottomSignupSigninWidget(
-                title: 'Register',
+                title: 'Sign In',
               ),
             ],
           ),
@@ -77,18 +79,12 @@ class SignupPage extends StatelessWidget {
     );
   }
 
-  Widget _bodySignUp(BuildContext context) {
+  Widget _bodySignIn(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         BasicTextField(
-          hintText: 'Full Name',
-          context: context,
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        BasicTextField(
-          hintText: 'Enter Email',
+          hintText: 'Enter Username Or Email',
           context: context,
         ),
         const SizedBox(
@@ -99,12 +95,23 @@ class SignupPage extends StatelessWidget {
           context: context,
         ),
         const SizedBox(
-          height: 40,
+          height: 20,
+        ),
+        const Padding(
+          padding: EdgeInsets.only(
+            left: 20,
+          ),
+          child: Text(
+            'Recovery Password',
+          ),
+        ),
+        const SizedBox(
+          height: 20,
         ),
         BasicAppButton(
           onPressed: () {},
-          title: 'Creat Account',
-        ),
+          title: 'Sign In',
+        )
       ],
     );
   }

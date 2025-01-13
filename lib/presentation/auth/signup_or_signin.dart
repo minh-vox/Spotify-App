@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:spotify/presentation/auth/signin.dart';
 import 'package:spotify/presentation/pre.dart';
 
 import '../../common/common.dart';
@@ -87,7 +88,14 @@ class SignupOrSigninPage extends StatelessWidget {
                       ),
                       Flexible(
                         child: GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const SignInPage(),
+                              ),
+                            );
+                          },
                           child: Text(
                             'Sign In',
                             style: TextStyle(
