@@ -16,6 +16,12 @@ dependencies:
   flutter_bloc: 8.1.6
   hydrated_bloc:
   path_provider:
+  firebase_core:
+  firebase_auth:
+
+  # DI
+  get_it:
+  injectable:
 
   cupertino_icons: ^1.0.8
   flutter_svg: 2.0.10+1
@@ -30,6 +36,7 @@ dev_dependencies:
   flutter_gen_runner: 5.6.0
   flutter_launcher_icons: ^0.14.2
   flutter_native_splash: ^2.4.3
+  injectable_generator:
 
 flutter_gen:
   output: lib/resource/generated
