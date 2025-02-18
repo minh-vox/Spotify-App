@@ -1,4 +1,8 @@
+import 'package:dartz/dartz.dart';
+
+import '../../domain.dart';
+
 abstract class AuthRepository {
-  Future<void> signup();
-  Future<void> signin();
+  Future<Either> signup(RegisterEntity register);
+  Future<Either> signin(LoginEntity login);
 }

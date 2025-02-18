@@ -7,15 +7,16 @@ class BasicTextField extends StatelessWidget {
   const BasicTextField({
     super.key,
     required this.hintText,
-    required this.context,
+    this.controller,
   });
 
   final String hintText;
-  final BuildContext context;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
       decoration: InputDecoration(
         hintText: hintText,
         suffixIcon: hintText == "Password"

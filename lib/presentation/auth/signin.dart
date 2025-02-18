@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:spotify/service_locator.dart';
 
 import '../../common/common.dart';
+import '../../domain/domain.dart';
 import '../../resource/resource.dart';
+import '../pre.dart';
 
 class SignInPage extends StatelessWidget {
-  const SignInPage({super.key});
+  SignInPage({super.key});
+
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: BasicAppBar(
         title: SvgPicture.asset(
           Assets.icons.spotifyIcon.path,
@@ -27,92 +34,77 @@ class SignInPage extends StatelessWidget {
             children: [
               TopSignupSigninWidget(
                 title: 'Sign In',
-                body: _bodySignIn(
-                  context,
+                body: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    BasicTextField(
+                      controller: _email,
+                      hintText: 'Enter Username Or Email',
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    BasicTextField(
+                      controller: _password,
+                      hintText: 'Password',
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(
+                        left: 20,
+                      ),
+                      child: Text(
+                        'Recovery Password',
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    BasicAppButton(
+                      onPressed: () async {
+                        var result = await getIt<SigninUseCase>().call(
+                          params: LoginEntity(
+                            email: _email.text.toString(),
+                            password: _password.text.toString(),
+                          ),
+                        );
+                        result.fold(
+                          (l) {
+                            var snackbar = SnackBar(
+                              content: Text(l),
+                              behavior: SnackBarBehavior.floating,
+                            );
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackbar);
+                          },
+                          (r) {
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const HomePage(),
+                              ),
+                              (route) => false,
+                            );
+                          },
+                        );
+                      },
+                      title: 'Sign In',
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    const BottomSignupSigninWidget(
+                      title: 'Sign In',
+                    ),
+                  ],
                 ),
-                context: context,
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                      height: 0.5,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            context.isDarkMode ? Colors.white : Colors.black,
-                            Colors.transparent,
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  const Text('Or'),
-                  Expanded(
-                    child: Container(
-                      height: 0.5,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            Colors.transparent,
-                            context.isDarkMode ? Colors.white : Colors.black,
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              const BottomSignupSigninWidget(
-                title: 'Sign In',
               ),
             ],
           ),
         ),
       ),
-    );
-  }
-
-  Widget _bodySignIn(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        BasicTextField(
-          hintText: 'Enter Username Or Email',
-          context: context,
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        BasicTextField(
-          hintText: 'Password',
-          context: context,
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        const Padding(
-          padding: EdgeInsets.only(
-            left: 20,
-          ),
-          child: Text(
-            'Recovery Password',
-          ),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        BasicAppButton(
-          onPressed: () {},
-          title: 'Sign In',
-        )
-      ],
     );
   }
 }

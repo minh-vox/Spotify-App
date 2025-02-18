@@ -6,10 +6,12 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     this.title,
     this.action,
+    this.hideBack = false,
   });
 
   final Widget? title;
   final Widget? action;
+  final bool hideBack;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
       ],
       leading: IconButton(
         onPressed: () {
-          Navigator.pop(context);
+          hideBack ? null : Navigator.pop(context);
         },
         icon: Container(
           height: 40,
@@ -35,8 +37,8 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
             shape: BoxShape.circle,
           ),
           child: Icon(
-            Icons.arrow_back_ios_new,
-            size: 15,
+            hideBack ? Icons.search : Icons.arrow_back_ios_new,
+            size: hideBack ? 30 : 15,
             color: context.isDarkMode ? Colors.white : Colors.black,
           ),
         ),

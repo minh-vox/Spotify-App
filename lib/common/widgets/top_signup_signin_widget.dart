@@ -5,15 +5,13 @@ class TopSignupSigninWidget extends StatelessWidget {
     super.key,
     required this.title,
     required this.body,
-    required this.context,
   });
 
   final String title;
   final Widget body;
-  final BuildContext context;
 
   @override
-  Widget build(context) {
+  Widget build(BuildContext context) {
     return Column(
       children: [
         Text(

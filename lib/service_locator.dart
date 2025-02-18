@@ -6,11 +6,26 @@ import 'domain/domain.dart';
 final getIt = GetIt.instance;
 
 Future<void> initializeDependencies() async {
-  getIt.registerSingleton<AuthFirebaseService>(
-    AuthFirebaseServiceImpl(),
+  getIt.registerSingleton<AuthSupaBaseService>(
+    AuthSupaBaseServiceImpl(),
+  );
+
+  getIt.registerSingleton<UserDataMapper>(
+    UserDataMapper(),
+  );
+  getIt.registerSingleton<RegisterDataMapper>(
+    RegisterDataMapper(),
   );
 
   getIt.registerSingleton<AuthRepository>(
-    AuthRepositoryImpl(),
+    AuthRepositoryImpl((getIt<RegisterDataMapper>())),
+  );
+
+  getIt.registerSingleton<SignupUseCase>(
+    SignupUseCase(),
+  );
+
+  getIt.registerSingleton<SigninUseCase>(
+    SigninUseCase(),
   );
 }

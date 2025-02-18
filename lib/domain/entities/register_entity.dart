@@ -1,11 +1,11 @@
-class CreateUserReq {
-  final String fullName;
+class RegisterEntity {
   final String email;
   final String password;
+  final String userName;
 
-  CreateUserReq({
-    required this.fullName,
+  RegisterEntity({
     required this.email,
     required this.password,
+    required this.userName,
   });
 }

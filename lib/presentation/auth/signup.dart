@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'package:spotify/common/common.dart';
-import 'package:spotify/resource/resource.dart';
+import '../../common/common.dart';
+import '../../domain/domain.dart';
+import '../../resource/resource.dart';
+import '../../service_locator.dart';
+import '../pre.dart';
 
 class SignupPage extends StatelessWidget {
-  const SignupPage({super.key});
+  SignupPage({super.key});
+
+  final TextEditingController _userName = TextEditingController();
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: BasicAppBar(
         title: SvgPicture.asset(
           Assets.icons.spotifyIcon.path,
@@ -27,85 +35,73 @@ class SignupPage extends StatelessWidget {
             children: [
               TopSignupSigninWidget(
                 title: 'Register',
-                body: _bodySignUp(context),
-                context: context,
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                      height: 0.5,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            context.isDarkMode ? Colors.white : Colors.black,
-                            Colors.transparent,
-                          ],
-                        ),
-                      ),
+                body: Column(
+                  children: [
+                    BasicTextField(
+                      controller: _userName,
+                      hintText: 'Full Name',
                     ),
-                  ),
-                  const Text('Or'),
-                  Expanded(
-                    child: Container(
-                      height: 0.5,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            Colors.transparent,
-                            context.isDarkMode ? Colors.white : Colors.black,
-                          ],
-                        ),
-                      ),
+                    const SizedBox(
+                      height: 20,
                     ),
-                  ),
-                ],
+                    BasicTextField(
+                      controller: _email,
+                      hintText: 'Enter Email',
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    BasicTextField(
+                      controller: _password,
+                      hintText: 'Password',
+                    ),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    BasicAppButton(
+                      onPressed: () async {
+                        var result = await getIt<SignupUseCase>().call(
+                          params: RegisterEntity(
+                            email: _email.text.toString(),
+                            password: _password.text.toString(),
+                            userName: _userName.text.toString(),
+                          ),
+                        );
+                        result.fold(
+                          (l) {
+                            var snackbar = SnackBar(
+                              content: Text(l),
+                              behavior: SnackBarBehavior.floating,
+                            );
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackbar);
+                          },
+                          (r) {
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (BuildContext context) => SignInPage(),
+                              ),
+                              (route) => false,
+                            );
+                          },
+                        );
+                      },
+                      title: 'Create Account',
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(
                 height: 30,
               ),
               const BottomSignupSigninWidget(
-                title: 'Register',
+                title: 'Sign In',
               ),
             ],
           ),
         ),
       ),
-    );
-  }
-
-  Widget _bodySignUp(BuildContext context) {
-    return Column(
-      children: [
-        BasicTextField(
-          hintText: 'Full Name',
-          context: context,
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        BasicTextField(
-          hintText: 'Enter Email',
-          context: context,
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        BasicTextField(
-          hintText: 'Password',
-          context: context,
-        ),
-        const SizedBox(
-          height: 40,
-        ),
-        BasicAppButton(
-          onPressed: () {},
-          title: 'Creat Account',
-        ),
-      ],
     );
   }
 }

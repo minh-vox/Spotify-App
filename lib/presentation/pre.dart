@@ -4,5 +4,7 @@ export 'auth/signup_or_signin.dart';
 export 'choose_mode/bloc/choose_mode_bloc.dart';
 export 'choose_mode/choose_mode.dart';
 export 'choose_mode/hydrated_bloc/theme_cubit.dart';
+export 'home/home.dart';
+export 'home/widgets/new_album_widget.dart';
+export 'home/widgets/tabBar_widget.dart';
 export 'intro/get_started.dart';
-export 'splash/splash.dart';

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:spotify/presentation/auth/signin.dart';
-import 'package:spotify/presentation/pre.dart';
 
 import '../../common/common.dart';
 import '../../resource/resource.dart';
+import '../pre.dart';
 
 class SignupOrSigninPage extends StatelessWidget {
   const SignupOrSigninPage({super.key});
@@ -79,7 +78,7 @@ class SignupOrSigninPage extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const SignupPage(),
+                                builder: (context) => SignupPage(),
                               ),
                             );
                           },
@@ -92,7 +91,7 @@ class SignupOrSigninPage extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const SignInPage(),
+                                builder: (context) => SignInPage(),
                               ),
                             );
                           },
